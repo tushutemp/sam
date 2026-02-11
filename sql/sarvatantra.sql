@@ -16,19 +16,17 @@ CREATE TABLE IF NOT EXISTS members (
     INDEX idx_join_date (join_date)
 );
 
--- Create opinions table
+-- Create opinions table (category field removed)
 CREATE TABLE IF NOT EXISTS opinions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     phone VARCHAR(20),
-    category VARCHAR(50) NOT NULL,
     opinion TEXT NOT NULL,
     language VARCHAR(10) DEFAULT 'hi',
     submission_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status ENUM('pending', 'reviewed') DEFAULT 'pending',
     INDEX idx_email (email),
-    INDEX idx_category (category),
     INDEX idx_submission_date (submission_date)
 );
 
@@ -65,11 +63,11 @@ INSERT INTO members (name, email, phone, gender, profession) VALUES
 ('Amit Patel', 'amit@example.com', '+911112223333', 'male', 'Developer'),
 ('Sneha Singh', 'sneha@example.com', '+919998887777', 'female', 'Designer');
 
--- Insert sample opinions data
-INSERT INTO opinions (name, email, phone, category, opinion, language) VALUES
-('John Doe', 'john@example.com', '+1234567890', 'content', 'This is excellent content. Very informative!', 'en'),
-('Jane Smith', 'jane@example.com', '+0987654321', 'design', 'The design is clean and modern. Great work!', 'en'),
-('Raj Kumar', 'raj@example.com', '+911234567890', 'feature', 'Please add more language options.', 'hi'),
-('Priya Sharma', 'priya@example.com', '+919876543210', 'usability', 'The interface is user-friendly and intuitive.', 'hi'),
-('Mike Johnson', 'mike@example.com', '+441234567890', 'content', 'The content needs more examples and case studies.', 'en'),
-('Sarah Williams', 'sarah@example.com', '+441234567891', 'design', 'Color scheme could be more vibrant.', 'en');
+-- Insert sample opinions data (category field removed from INSERT statement)
+INSERT INTO opinions (name, email, phone, opinion, language) VALUES
+('John Doe', 'john@example.com', '+1234567890', 'This is excellent content. Very informative!', 'en'),
+('Jane Smith', 'jane@example.com', '+0987654321', 'The design is clean and modern. Great work!', 'en'),
+('Raj Kumar', 'raj@example.com', '+911234567890', 'Please add more language options.', 'hi'),
+('Priya Sharma', 'priya@example.com', '+919876543210', 'The interface is user-friendly and intuitive.', 'hi'),
+('Mike Johnson', 'mike@example.com', '+441234567890', 'The content needs more examples and case studies.', 'en'),
+('Sarah Williams', 'sarah@example.com', '+441234567891', 'Color scheme could be more vibrant.', 'en');
